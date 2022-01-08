@@ -1,0 +1,22 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <div class="counter">{{ timer }}</div>
+  </ng-template>
+  <h4 class="question">
+    <i>{{ triviaQuestion.question }}</i>
+  </h4>
+  <ng-template pTemplate="footer">
+    <div class="answers">
+      <div class="answer" *ngFor="let answer of ans; let i = index">
+        <button
+          pButton
+          type="button"
+          class="p-button-danger"
+          (click)="answerSelected(answer)"
+        >
+          {{ i + 1 }}. {{ answer.answer }}
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-card>

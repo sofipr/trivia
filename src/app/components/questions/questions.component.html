@@ -1,0 +1,21 @@
+<p-dialog header="Trivia Game" [(visible)]="displayDialog">
+  <h4>You Final Score is: {{ score }}%</h4>
+  <p>You answered correct on {{ correctCount }} questions</p>
+  <p>You answered incorrect on {{ totalCount }} questions</p>
+</p-dialog>
+<div *ngIf="triviaQuestions.length">
+  <p-carousel
+    [showNavigators]="false"
+    [value]="triviaQuestions"
+    [numVisible]="1"
+    [numScroll]="1"
+  >
+    <ng-template let-triviaQuestion pTemplate="item">
+      <app-questions-carousel
+        [triviaQuestion]="triviaQuestion"
+        [timer]="timeLeft"
+        (gameOver)="nextQuestion($event)"
+      ></app-questions-carousel>
+    </ng-template>
+  </p-carousel>
+</div>
